@@ -1,0 +1,29 @@
+﻿@model Class
+@{
+	ViewBag.Title = "Delete Class";
+}
+<h1 class="display-4 text-center mb-5">Delete Class</h1>
+
+<div class="row">
+	<div class="col-md-4 mx-auto border border-3 border-success rounded-4 p-5">
+		<ul class="list-group mb-5">
+			<li class="list-group-item">
+				<h4>Class Name: @Model?.Title</h4>
+			</li>
+			<li class="list-group-item">
+					Class Number:	@Model?.Number
+			</li>
+			<li class="list-group-item">
+				@Model?.Teacher.FullName
+			</li>
+			<li class="list-group-item">
+				Day and Time: @Model?.Day.Name, @Model?.MilitaryTime
+			</li>
+		</ul>
+		<form asp-action="Delete" method="post">
+			<input type="hidden" asp-for="ClassId" />
+			<button type="submit" asp-controller="Class" class="btn btn-outline-danger">Delete</button>
+			<a asp-action="Index" asp-controller="Home" class="btn btn-outline-dark">Cancel</a>
+		</form>
+	</div>
+</div>

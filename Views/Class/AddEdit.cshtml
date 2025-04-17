@@ -1,0 +1,43 @@
+﻿@model Class
+@{
+	ViewBag.Title = $"{ViewBag.Operation} Class";
+}
+
+<h1 class="display-4 text-center mb-5">@ViewBag.Operation Class</h1>
+
+<div class="row">
+	<div class="col-md-4 mx-auto border border-3 border-success rounded-4 p-5">
+		<form asp-action="Add" method="post">
+			<input type="hidden" asp-for="ClassId" />
+			<div class="mb-3">
+				<label asp-for="Title" class="form-label"></label>
+				<input asp-for="Title" class="form-control" />
+				<span asp-validation-for="Title" class="text-danger"></span>
+			</div>
+			<div class="mb-3">
+				<label asp-for="Number" class="form-label"></label>
+				<input asp-for="Number" class="form-control" />
+				<span asp-validation-for="Number" class="text-danger"></span>
+			</div>
+			<div class="mb-3">
+				<label asp-for="Teacher" class="form-label"></label>
+				<select asp-for="TeacherId" class="form-select"
+								asp-items="@(new SelectList(ViewBag.Teachers,"TeacherId","FullName"))"></select>
+				<span asp-validation-for="Teacher" class="text-danger"></span>
+			</div>
+			<div class="mb-3">
+				<label asp-for="Day" class="form-label"></label>
+				<select asp-for="DayId" class="form-select"
+								asp-items="@(new SelectList(ViewBag.Days,"DayId","Name"))"></select>
+				<span asp-validation-for="Day" class="text-danger"></span>
+			</div>
+			<div class="mb-3">
+				<label asp-for="MilitaryTime" class="form-label"></label>
+				<input asp-for="MilitaryTime" class="form-control" />
+				<span asp-validation-for="MilitaryTime" class="text-danger"></span>
+			</div>
+			<button type="submit" class="btn @(ViewBag.Operation== "Add"?  "btn-outline-success": "btn-outline-danger")")>Save</button>
+			<a asp-action="Index" asp-controller="Home" class="btn btn-outline-dark">Cancel</a>
+		</form>
+	</div>
+</div>

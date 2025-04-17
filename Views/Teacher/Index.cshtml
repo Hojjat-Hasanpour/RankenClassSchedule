@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Teacher>
+@{
+	ViewBag.Title = "Teachers";
+}
+
+<div class="text-center">
+	<h1 class="display-4">Teachers</h1>
+</div>
+
+<a asp-action="Add" class="ms-2 btn btn-outline-success">Add Teacher</a>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>FirstName</th>
+			<th>LastName</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (Teacher teacher in Model)
+		{
+			<tr>
+				<td>@teacher.FirstName</td>
+				<td>@teacher.LastName</td>
+				<td>
+					@* <a asp-action="Edit" asp-route-id="@teacher.TeacherId">Edit</a> | *@
+					<a asp-action="Delete" asp-controller="Teacher" asp-route-id="@teacher.TeacherId" class="btn btn-outline-dark">Delete</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+
+</table>
